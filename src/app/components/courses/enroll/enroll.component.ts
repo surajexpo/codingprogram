@@ -2,13 +2,18 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service';
+import { EnrollService } from 'src/app/services/shared.service';
 @Component({
-  selector: 'app-landing',
-  templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss'],
+  selector: 'app-enroll',
+  templateUrl: './enroll.component.html',
+  styleUrls: ['./enroll.component.scss'],
 })
-export class LandingComponent {
-  constructor(private user_service: UserService, private snack: MatSnackBar) {}
+export class EnrollComponent {
+  constructor(
+    private user_service: UserService,
+    private snack: MatSnackBar,
+    private enrollService: EnrollService
+  ) {}
   enrollForm = new FormGroup({
     mobileNo: new FormControl('', [
       Validators.minLength(10),
@@ -22,16 +27,22 @@ export class LandingComponent {
   get getControl() {
     return this.enrollForm.controls;
   }
-  submit() {
+ async submit() {
+    const courseName = this.enrollService.getCourse();
+    this.enrollForm.controls['course'].setValue(courseName);
     console.log('form data', this.enrollForm.value);
-    this.user_service
+    await this.user_service
       .enroll(this.enrollForm.value)
       .then((res) => {
-        this.snack.open('Thank you for your message. We will respond as soon as possible', 'ok', {
-          horizontalPosition: 'right',
-          verticalPosition: 'top',
-          duration: 3000,
-        });
+        this.snack.open(
+          'Thank you for your message. We will respond as soon as possible',
+          'ok',
+          {
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            duration: 3000,
+          }
+        );
         console.log('data has been save', res);
       })
       .catch((error: any) => {

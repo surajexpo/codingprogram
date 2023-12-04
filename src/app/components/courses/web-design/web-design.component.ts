@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EnrollService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-web-design',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./web-design.component.scss']
 })
 export class WebDesignComponent {
-
+  constructor(private enrollService:EnrollService) {}
+  ngOnInit(){
+    this.enrollService.setCourse('Web Designing');
+  }
 }

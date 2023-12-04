@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireModule } from '@angular/fire/compat';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './components/landing/landing.component';
@@ -19,7 +22,12 @@ import { CppComponent } from './components/courses/cpp/cpp.component';
 import { AngularComponent } from './components/courses/angular/angular.component';
 import { ReactComponent } from './components/courses/react/react.component';
 import { CourseDetailsComponent } from './components/course-details/course-details.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from 'src/environments/environment.development';
+import { EnrollComponent } from './components/courses/enroll/enroll.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,11 +46,18 @@ import { CourseDetailsComponent } from './components/course-details/course-detai
     CppComponent,
     AngularComponent,
     ReactComponent,
-    CourseDetailsComponent
+    CourseDetailsComponent,
+    EnrollComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+     ReactiveFormsModule,
+     BrowserAnimationsModule,
+    FormsModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -83,17 +83,34 @@
             e-mail and keep checking back.
           </p>
           <div class="w-100">
+            <form [formGroup]="emailForm">
             <div class="input-group">
               <input
-                type="text"
+                type="email"
                 class="form-control border-light"
                 style="padding: 30px"
                 placeholder="Your Email Address"
+                formControlName="email"
               />
               <div class="input-group-append">
-                <button class="btn btn-primary px-4">Sign Up</button>
+                <button class="btn btn-primary px-4" (click)="submit()" [disabled]="emailForm.invalid">Sign Up</button>
               </div>
             </div>
+            <div *ngIf="
+            getControl['email'].touched &&
+            getControl['email'].invalid
+          " class="text-danger">
+          <div *ngIf="getControl['email'].errors?.['required']">
+            Email is required.
+          </div>
+          <div *ngIf="getControl['email'].errors?.['pattern']">
+            invalid Email .
+          </div>
+          <div *ngIf="getControl['email'].errors?.['length']">
+            connot be empty.
+          </div>
+        </div>
+          </form>
           </div>
         </div>
       </div>
@@ -105,7 +122,7 @@
       <div class="row">
         <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
           <p class="m-0 text-white">
-            &copy; <a href="#">CodingProgram</a>. All Rights Reserved. Designed
+            &copy; <a routerLink="/">CodingProgram</a>. All Rights Reserved. Designed
             by <a href="https://surajexpo.com">surajexpo</a>
           </p>
         </div>
