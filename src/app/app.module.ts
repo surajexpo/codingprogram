@@ -28,6 +28,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment.development';
 import { EnrollComponent } from './components/courses/enroll/enroll.component';
+import { TrainerComponent } from './components/trainer/trainer.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,9 @@ import { EnrollComponent } from './components/courses/enroll/enroll.component';
     AngularComponent,
     ReactComponent,
     CourseDetailsComponent,
-    EnrollComponent
+    EnrollComponent,
+    TrainerComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,

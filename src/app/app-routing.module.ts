@@ -12,6 +12,7 @@ import { JavaComponent } from './components/courses/java/java.component';
 import { WebDesignComponent } from './components/courses/web-design/web-design.component';
 import { DataStructureComponent } from './components/courses/data-structure/data-structure.component';
 import { CourseDetailsComponent } from './components/course-details/course-details.component';
+import { TrainerComponent } from './components/trainer/trainer.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
   {
     path: 'UpcomingBatches',
     component: UpcomingBatchesComponent,
+  },
+  {
+    path: 'trainers',
+    component:TrainerComponent,
   },
   {
     path: 'navbar',
