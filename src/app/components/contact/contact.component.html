@@ -65,12 +65,12 @@
                         </div>
                         <div class="control-group">
                             <textarea class="form-control border-0 py-3 px-4" rows="5" id="message"
-                                placeholder="Message" required="required" formControlName="message"
+                                placeholder="Optional" required="required" formControlName="message"
                                 data-validation-required-message="Please enter your message"></textarea>
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="text-center">
-                            <button class="btn btn-primary py-3 px-5" type="submit" (click)="submit()" id="sendMessageButton">Send
+                            <button class="btn btn-primary py-3 px-5" type="submit" (click)="submit()" [disabled]="contactForm.invalid" id="sendMessageButton">Send
                                 Message</button>
                         </div>
                     </form>

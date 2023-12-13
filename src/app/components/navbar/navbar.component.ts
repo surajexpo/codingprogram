@@ -17,7 +17,7 @@ export class NavbarComponent {
     ]),
     name: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
-    message: new FormControl('', Validators.required),
+    message: new FormControl('message', Validators.required),
   });
   get getControl() {
     return this.contactForm.controls;

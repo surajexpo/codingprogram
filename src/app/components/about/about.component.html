@@ -136,27 +136,91 @@
       <div class="col-lg-5">
         <div class="card border-0">
           <div class="card-header bg-light text-center p-4">
-            <h1 class="m-0">Sign Up Now</h1>
+            <h1 class="m-0">Enroll Now</h1>
           </div>
           <div class="card-body rounded-bottom bg-primary p-5">
-            <form>
+            <form [formGroup]="enrollForm"> 
               <div class="form-group">
-                <input type="text" class="form-control border-0 p-4" placeholder="Your name" required="required" />
+                <input
+                  type="text"
+                  class="form-control border-0 p-4"
+                  placeholder="Your name"
+                  required="required"
+                  formControlName="name"
+                />
+              </div>
+              <div
+              *ngIf="getControl['name'].touched && getControl['name'].invalid"
+              class="text-danger"
+            >
+              <div *ngIf="getControl['name'].errors?.['required']">
+               Name is required.
+              </div>
+            </div>
+              <div class="form-group">
+                <input
+                  type=""
+                  class="form-control border-0 p-4"
+                  placeholder="Your Phone"
+                  required="required"
+                  formControlName="mobileNo"
+                />
+              </div>
+              <div
+              *ngIf="
+                getControl['mobileNo'].touched && getControl['mobileNo'].invalid
+              "
+              class="text-danger"
+            >
+              <div *ngIf="getControl['mobileNo'].errors?.['required']">
+                Mobile No. is required.
+              </div>
+              <div *ngIf="getControl['mobileNo'].errors?.['pattern']">
+                invalid Mobile Number.
+              </div>
+              <div *ngIf="getControl['mobileNo'].errors?.['length']">
+                connot be empty.
+              </div>
+            </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  class="form-control border-0 p-4"
+                  placeholder="Your email [Optional]"
+            
+                  formControlName="email"
+                />
               </div>
               <div class="form-group">
-                <input type="email" class="form-control border-0 p-4" placeholder="Your email" required="required" />
-              </div>
-              <div class="form-group">
-                <select class="custom-select border-0 px-4" style="height: 47px">
+                <select
+                  class="custom-select border-0 px-4"
+                  style="height: 47px"
+                  formControlName="course"
+                >
                   <option selected>Select a course</option>
-                  <option value="1">Course 1</option>
-                  <option value="2">Course 1</option>
-                  <option value="3">Course 1</option>
+                  <option value="c programming">C programming</option>
+                  <option value="core java">Core Java</option>
+                  <option value="python programming">Python Programming</option>
+                  <option value="web designing">Web Designing</option>
+                  <option value="data structure">Data Structure</option>
                 </select>
               </div>
+              <div
+              *ngIf="getControl['course'].touched && getControl['course'].invalid"
+              class="text-danger"
+            >
+              <div *ngIf="getControl['course'].errors?.['required']">
+               course is required.
+              </div>
+            </div>
               <div>
-                <button class="btn btn-dark btn-block border-0 py-3" type="submit">
-                  Sign Up Now
+                <button
+                  class="btn btn-dark btn-block border-0 py-3"
+                  type="submit"
+                 
+                  (click)="submit()"
+                >
+                  Enroll
                 </button>
               </div>
             </form>

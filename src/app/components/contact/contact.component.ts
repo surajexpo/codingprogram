@@ -9,6 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ContactComponent {
   constructor(private user_service: UserService, private snack: MatSnackBar) {}
+  disable:boolean=true;
   contactForm = new FormGroup({
     mobileNo: new FormControl('', [
       Validators.minLength(10),
@@ -17,13 +18,15 @@ export class ContactComponent {
     ]),
     name: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
-    message: new FormControl('', Validators.required),
+    message: new FormControl('message', Validators.required),
   });
   get getControl() {
+   
     return this.contactForm.controls;
   }
   submit() {
     console.log('form data', this.contactForm.value);
+   
     this.user_service
       .contact(this.contactForm.value)
       .then((res) => {

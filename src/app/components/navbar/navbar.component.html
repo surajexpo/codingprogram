@@ -148,7 +148,7 @@
               </div>
               <div *ngIf="getControl['email'].touched && getControl['email'].invalid" class="text-danger">
                 <div *ngIf="getControl['email'].errors?.['required']">
-                  Name is required.
+                  Email is required.
                 </div>
               </div>
               <div class="control-group">
@@ -158,8 +158,8 @@
                 <p class="help-block text-danger"></p>
               </div>
               <div class="text-center">
-                <button class="btn btn-primary py-3 px-5" type="submit" class="btn btn-secondary"
-                  data-bs-dismiss="modal" id="sendMessageButton" (click)="submit()">
+                <button class="btn btn-primary py-3 px-5" type="submit" 
+                  data-bs-dismiss="modal" id="sendMessageButton" [disabled]="contactForm.invalid" (click)="submit()">
                   Get a call
                 </button>
               </div>
