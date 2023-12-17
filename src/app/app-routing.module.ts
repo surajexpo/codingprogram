@@ -13,6 +13,7 @@ import { WebDesignComponent } from './components/courses/web-design/web-design.c
 import { DataStructureComponent } from './components/courses/data-structure/data-structure.component';
 import { CourseDetailsComponent } from './components/course-details/course-details.component';
 import { TrainerComponent } from './components/trainer/trainer.component';
+import { AngularComponent } from './components/courses/angular/angular.component';
 
 const routes: Routes = [
   {
@@ -63,6 +64,10 @@ const routes: Routes = [
   {
     path: 'data-structure',
     component: DataStructureComponent,
+  },
+  {
+    path: 'angular',
+    component: AngularComponent,
   },
   {
     path: 'course-detail',
