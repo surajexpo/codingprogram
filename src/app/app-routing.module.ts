@@ -14,6 +14,8 @@ import { DataStructureComponent } from './components/courses/data-structure/data
 import { CourseDetailsComponent } from './components/course-details/course-details.component';
 import { TrainerComponent } from './components/trainer/trainer.component';
 import { AngularComponent } from './components/courses/angular/angular.component';
+import { PythonComponent } from './components/courses/python/python.component';
+import { CppComponent } from './components/courses/cpp/cpp.component';
 
 const routes: Routes = [
   {
@@ -68,6 +70,14 @@ const routes: Routes = [
   {
     path: 'angular',
     component: AngularComponent,
+  },
+  {
+    path: 'python',
+    component: PythonComponent,
+  },
+  {
+    path: 'cpp',
+    component: CppComponent,
   },
   {
     path: 'course-detail',
